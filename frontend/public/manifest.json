@@ -1,15 +1,20 @@
 {
   "name": "Career and Internship Finder",
   "short_name": "CareerFinder",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "icons/magangin-icon.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "icons/magangin-icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ]
 }

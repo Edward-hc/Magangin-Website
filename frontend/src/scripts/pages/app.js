@@ -12,6 +12,9 @@ class App {
     if (page) {
       this._content.innerHTML = await page.render();
       if (page.afterRender) await page.afterRender();
+
+      // ✅ Scroll ke atas setelah render selesai
+      window.scrollTo(0, 0);
     } else {
       this._content.innerHTML = '<p>Page not found</p>';
     }

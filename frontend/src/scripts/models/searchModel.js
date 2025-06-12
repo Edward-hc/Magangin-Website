@@ -1,23 +1,25 @@
+import JobModel from './jobModel.js';
+
 const SearchModel = {
   async searchJobs({ keyword, location, jobType, industry, salary }) {
     // Simulasi data dummy
     const dummyData = [
-        {
-            id: 1,
-            title: 'Frontend Developer Intern',
-            company: 'Magangin Tech',
-            location: 'Jakarta',
-            jobType: 'Internship',
-            industry: 'tech',
-            salaryRange: 'low',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec justo risus, auctor sed lacinia ut, rhoncus in velit. Sed iaculis vehicula lorem, vel finibus orci elementum id. Nulla dapibus fermentum nunc in pellentesque. Ut porta convallis sapien. Aliquam consequat pellentesque metus, sit amet viverra libero venenatis in. Nunc tellus metus, scelerisque ut lectus sed, imperdiet vestibulum neque. Mauris interdum cursus augue in blandit. Curabitur a leo arcu. Suspendisse finibus finibus nulla sed commodo. Vestibulum vel eros id erat lacinia condimentum. Nunc hendrerit leo sit amet quam fermentum, eget auctor massa convallis. Fusce mollis sollicitudin cursus. Quisque ac libero vitae sapien pharetra cursus vel eu tortor. Duis imperdiet augue quis dolor interdum lobortis. Morbi mattis posuere tincidunt. Etiam nec sapien non neque pellentesque dapibus. Nulla nec orci sit amet lectus aliquam tempus at ut ipsum. Pellentesque massa purus, fringilla rutrum mi eget, suscipit efficitur lorem. Fusce volutpat est sit amet nibh commodo, at elementum nulla elementum. Pellentesque vitae mi condimentum, mollis ante ut, porttitor urna. Nam luctus sem a nisl semper, viverra sollicitudin dui fermentum. Phasellus tristique gravida turpis ac interdum. Mauris diam lorem, viverra a velit vel, posuere ullamcorper nulla. Fusce ut magna id mauris tincidunt ultrices ut id orci. Donec mollis dolor in dolor congue, in viverra enim varius. Nunc sit amet dui eu sem rhoncus fermentum. Cras malesuada nisl orci, non pulvinar leo hendrerit imperdiet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce volutpat rhoncus vulputate. Vivamus vestibulum interdum tortor, a bibendum mauris bibendum sit amet. Donec vehicula justo eget justo vehicula, et maximus risus finibus. Phasellus tempor nulla sit amet erat posuere, et accumsan mi sodales. Vestibulum eget ante ut quam vulputate condimentum ultrices eu leo. Donec non sapien ut nunc vehicula suscipit. Nam venenatis dolor magna, ac tempus ligula porttitor in. Cras tristique eget metus a placerat. Phasellus porttitor turpis ac metus suscipit, vel congue tortor bibendum. In massa sem, viverra a malesuada ornare, aliquet lacinia lectus. Duis euismod placerat nisl, sed ornare eros lacinia mattis. Nam congue in turpis at finibus. Etiam pretium lacinia massa ut varius. Phasellus a justo dapibus, tincidunt orci non, fringilla tortor. Integer eu mattis diam. Suspendisse fermentum non tortor at faucibus. Suspendisse elit nisl, aliquet ac iaculis non, malesuada eu est. Sed feugiat neque a augue maximus, quis convallis purus vehicula. Nulla facilisi. Donec semper lacus eu purus accumsan, et finibus massa ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis at sem augue. Phasellus varius tincidunt nibh at mollis. Aliquam semper finibus nibh vitae malesuada. Maecenas blandit tortor vel elit suscipit sodales. Aenean in lacinia odio, ac facilisis lacus. Sed suscipit eu augue ut congue. Etiam mollis risus luctus felis condimentum, vitae ornare enim placerat. Phasellus semper quam et ligula iaculis aliquam. In vel odio nunc. Vivamus sed leo a felis dictum convallis.',
-            salaryDisplay: 'IDR 2 - 3 M',
-            image: '/image/google.png',
-            logo: '',
-            bannerImage: '/image/google2.jpg',
-            isRecommended: true,
-        },
-        {
+      {
+        id: 1,
+        title: 'Frontend Developer Intern',
+        company: 'Magangin Tech',
+        location: 'Jakarta',
+        jobType: 'Internship',
+        industry: 'tech',
+        salaryRange: 'low',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+        salaryDisplay: 'IDR 2 - 3 M',
+        image: '/image/google.png',
+        logo: '',
+        bannerImage: '/image/google2.png',
+        isRecommended: true,
+      },
+       {
             id: 2,
             title: 'ShopeeUnited States Department of the Air Force',
             company: 'PT. Design Co.',
@@ -182,47 +184,47 @@ const SearchModel = {
             bannerImage: '/image/banner-buzzlink.png',
             isRecommended: true,
         }
-
     ];
 
-    // Jika semua filter kosong → tampilkan rekomendasi
-    const allEmpty =
-      !keyword && !location && !jobType && !industry && !salary;
+    // ⏬ Pindahkan ini ke dalam fungsi agar dummyData sudah tersedia
+    const postedJobs = JobModel.getAllJobs();
+    const allJobs = [...dummyData, ...postedJobs];
+
+    const allEmpty = !keyword && !location && !jobType && !industry && !salary;
 
     if (allEmpty) {
-      return dummyData.filter(job => job.isRecommended);
+      return allJobs.filter(job => job.isRecommended);
     }
 
-    // Jika ada filter → lakukan penyaringan
-    const filtered = dummyData.filter(job => {
-    const keywordMatch = keyword
+    const filtered = allJobs.filter(job => {
+      const keywordMatch = keyword
         ? job.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        job.company.toLowerCase().includes(keyword.toLowerCase())
+          job.company.toLowerCase().includes(keyword.toLowerCase())
         : true;
 
-    const locationMatch = location
+      const locationMatch = location
         ? job.location.toLowerCase().includes(location.toLowerCase())
         : true;
 
-    const jobTypeMatch = jobType
+      const jobTypeMatch = jobType
         ? job.jobType.toLowerCase().replace('-', '') === jobType.toLowerCase().replace('-', '')
         : true;
 
-    const industryMatch = industry
+      const industryMatch = industry
         ? job.industry.toLowerCase() === industry.toLowerCase()
         : true;
 
-    const salaryMatch = salary
+      const salaryMatch = salary
         ? job.salaryRange.toLowerCase() === salary.toLowerCase()
         : true;
 
-    return (
+      return (
         keywordMatch &&
         locationMatch &&
         jobTypeMatch &&
         industryMatch &&
         salaryMatch
-    );
+      );
     });
 
     return filtered;

@@ -1,0 +1,109 @@
+.auth-login-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.background-img1 {
+  position: absolute;
+  margin-top: 280px;
+  margin-right: 900px;
+  width: 800px;
+  height: 800px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.auth-login-box {
+  position: relative;
+  background: #fff;
+  z-index: 1;
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  width: 600px;
+  text-align: left;
+  border: 2px solid rgba(4, 42, 76, 0.5);
+  margin-bottom: 50px;
+  margin-top: 15px;
+}
+
+.auth-login-box h2 {
+  font-size: 32px;
+  margin-bottom: 1.5rem;
+  color: #042A4C;
+  font-weight: 600;
+}
+
+.logo-auth {
+  display: block;
+  margin: 0 auto 16px auto;
+}
+
+.auth-header img {
+    height: 70px;
+  width: auto;
+}
+
+.auth-login-box form label {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  display: block;
+  color: #042A4C;
+}
+
+.auth-login-box input {
+  width: 100%;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 1px solid #042A4C;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.auth-login-box .forgot-pass {
+  text-align: right;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #0FFCBE;
+}
+
+.auth-login-box button {
+  width: 100%;
+  background-color: #042A4C;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.auth-login-box .switch-auth {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 17px;
+  color: #042A4C;
+}
+
+.auth-login-box .switch-auth a {
+  color: #0FFCBE;
+  text-decoration: none;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}

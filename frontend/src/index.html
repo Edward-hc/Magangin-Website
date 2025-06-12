@@ -6,6 +6,7 @@
         <link rel="manifest" href="/manifest.json" />
 
         <title>Magangin | Career and Internship Finder</title>
+        <link rel="icon" href="/favicon.png" type="image/png">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +31,15 @@
 
                     <ul class="nav-menu">
                         <li><a href="#home" class="nav-item btn-nav">Employers / Post Job</a></li>
-                        <li><a href="#login" class="nav-item nav-divider">Sign In</a></li>
-                        <li><a href="#profile" class="nav-item "><img src="/icons/profile_icon.png" class="profile-icon"/></a></li>
+                        <li><a href="#login" id="nav-login" class="nav-item nav-divider">Sign In</a></li>
+                        <li class="nav-item profile-dropdown">
+                            <a href="#" id="profile-icon-toggle">
+                                <img src="/icons/profile_icon.png" class="profile-icon" />
+                            </a>
+                            <ul class="dropdown-menu" id="profile-dropdown-menu">
+                                <li><a href="#" id="logout-btn">Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     </nav>
                 </div>
@@ -50,7 +58,8 @@
                     <h4>For Jobseekers</h4>
                     <ul>
                         <li><a href="#search">Search Jobs</a></li>
-                        <li><a href="#">Login/Register</a></li>
+                        <li><a href="#register">Register</a></li>
+                        <li><a href="#login">Login</a></li>
                         <li><a href="#">Profile</a></li>
                     </ul>
                     </div>
@@ -88,5 +97,54 @@
             <p>© 2025 | All Rights Reserved.</p>
         </div>
         </footer>
+        <script>
+            function updateNavbarAfterLogin() {
+                const loginLink = document.getElementById('nav-login');
+                const userFirstName = localStorage.getItem('userFirstName');
+
+                if (userFirstName && loginLink) {
+                loginLink.textContent = `${userFirstName}`;
+                loginLink.setAttribute('href', '#profile');
+                }
+
+                const dropdownMenu = document.getElementById('profile-dropdown-menu');
+                if (userFirstName && dropdownMenu) {
+                dropdownMenu.style.display = 'none'; // tetap hidden sampai diklik
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                updateNavbarAfterLogin(); // ✅ panggil sekali saat halaman load
+
+                const profileToggle = document.getElementById('profile-icon-toggle');
+                const dropdownMenu = document.getElementById('profile-dropdown-menu');
+                const logoutBtn = document.getElementById('logout-btn');
+
+                profileToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentUser = localStorage.getItem('userFirstName');
+                if (!currentUser) {
+                    dropdownMenu.style.display = 'none';
+                    return;
+                }
+
+                dropdownMenu.style.display =
+                    dropdownMenu.style.display === 'block' ? 'none' : 'block';
+                });
+
+                document.addEventListener('click', (e) => {
+                if (!e.target.closest('.profile-dropdown')) {
+                    dropdownMenu.style.display = 'none';
+                }
+                });
+
+                logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('userFirstName');
+                window.location.href = '#home';
+                window.location.reload();
+                });
+            });
+        </script>
     </body>
 </html>

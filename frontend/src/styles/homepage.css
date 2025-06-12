@@ -247,6 +247,7 @@
   gap: 40px;
   padding: 40px 20px;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .signup-box {
