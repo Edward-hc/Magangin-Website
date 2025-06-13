@@ -6,14 +6,14 @@ class App {
   }
 
   async renderPage() {
-    const hash = window.location.hash.slice(1).toLowerCase() || '/';
-    const page = routes[hash];
+    const hash = window.location.hash.slice(1).toLowerCase(); // 'search'
+    const page = routes[hash]; // cocokkan dengan 'search' di routes
 
-    if (page) {
+    if (page && typeof page.render === 'function') {
       this._content.innerHTML = await page.render();
-      if (page.afterRender) await page.afterRender();
-
-      // ✅ Scroll ke atas setelah render selesai
+      if (typeof page.afterRender === 'function') {
+        await page.afterRender();
+      }
       window.scrollTo(0, 0);
     } else {
       this._content.innerHTML = '<p>Page not found</p>';

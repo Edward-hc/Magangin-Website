@@ -13,7 +13,10 @@ const LoginPresenter = {
       const result = AuthModel.login({ email, password });
 
       if (result.success) {
+        
         localStorage.setItem('userFirstName', result.user.firstName);
+        localStorage.setItem('userLastName', result.user.lastName); 
+        localStorage.setItem('userEmail', result.user.email);
         messageBox.innerHTML = '<p class="success">Login successful!</p>';
         updateNavbarAfterLogin();
         window.location.hash = '#home';

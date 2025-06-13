@@ -30,7 +30,7 @@
                         <a href="#search" class="nav-item">Search Job</a>
 
                     <ul class="nav-menu">
-                        <li><a href="#home" class="nav-item btn-nav">Employers / Post Job</a></li>
+                        <li><a href="#postjob" class="nav-item btn-nav">Employers / Post Job</a></li>
                         <li><a href="#login" id="nav-login" class="nav-item nav-divider">Sign In</a></li>
                         <li class="nav-item profile-dropdown">
                             <a href="#" id="profile-icon-toggle">
@@ -60,14 +60,14 @@
                         <li><a href="#search">Search Jobs</a></li>
                         <li><a href="#register">Register</a></li>
                         <li><a href="#login">Login</a></li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="#profile">Profile</a></li>
                     </ul>
                     </div>
                 <div class="footer-column">
                     <h4>Popular</h4>
                     <ul>
                         <li><a href="#search">Search Jobs</a></li>
-                        <li><a href="#">Employers/Post Job</a></li>
+                        <li><a href="#postjob">Employers/Post Job</a></li>
                     </ul>
                     </div>
                 <div class="footer-column">
@@ -88,7 +88,7 @@
                 <a href="#"><img src="/icons/facebook.png" alt="Facebook" /></a>
                 <a href="#"><img src="/icons/twitter.png" alt="X" /></a>
                 <a href="#"><img src="/icons/youtube.png" alt="YouTube" /></a>
-                <a href="#"><img src="/icons/instagram.png" alt="Instagram" /></a>
+                <a href="https://www.instagram.com/edward_hc7/"><img src="/icons/instagram.png" alt="Instagram" /></a>
                 <a href="#"><img src="/icons/tiktok.png" alt="TikTok" /></a>
             </div>
             </div>
@@ -103,18 +103,21 @@
                 const userFirstName = localStorage.getItem('userFirstName');
 
                 if (userFirstName && loginLink) {
-                loginLink.textContent = `${userFirstName}`;
-                loginLink.setAttribute('href', '#profile');
+                    loginLink.textContent = `${userFirstName}`;
+                    loginLink.setAttribute('href', '#profile');
                 }
 
                 const dropdownMenu = document.getElementById('profile-dropdown-menu');
                 if (userFirstName && dropdownMenu) {
-                dropdownMenu.style.display = 'none'; // tetap hidden sampai diklik
+                    dropdownMenu.style.display = 'none'; // tetap hidden sampai diklik
                 }
             }
 
+            // ✅ Agar bisa dipanggil dari file JS lain
+            window.updateNavbarAfterLogin = updateNavbarAfterLogin;
+
             document.addEventListener('DOMContentLoaded', () => {
-                updateNavbarAfterLogin(); // ✅ panggil sekali saat halaman load
+                updateNavbarAfterLogin(); // panggil saat load halaman
 
                 const profileToggle = document.getElementById('profile-icon-toggle');
                 const dropdownMenu = document.getElementById('profile-dropdown-menu');
@@ -141,6 +144,8 @@
                 logoutBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 localStorage.removeItem('userFirstName');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userProfile');
                 window.location.href = '#home';
                 window.location.reload();
                 });

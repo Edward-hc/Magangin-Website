@@ -7,10 +7,16 @@ const init = async () => {
     host: 'localhost',
     routes: {
       cors: {
-        origin: ['*'],
-      }
+        origin: ['*'], // agar bisa diakses dari frontend
+      },
+      payload: {
+        maxBytes: 10485760, // 10MB (ganti sesuai kebutuhan)
+      },
     },
   });
+
+  const connectDB = require('./db/mongo').default;
+  await connectDB();
 
   server.route(routes);
 

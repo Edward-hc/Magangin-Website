@@ -156,6 +156,7 @@
 .slide {
   flex: 0 0 100%;
   display: flex;
+  flex-wrap: wrap; 
   justify-content: space-around;
   align-items: center;
   gap: 30px;
@@ -412,4 +413,82 @@
 .postjob:active {
   transform: translateY(4px) translateX(2px);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+} 
+
+/* === Responsive Layout Fixes for .get-started Section === */
+
+@media (max-width: 1024px) {
+  .get-started {
+    height: auto;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .get-started img {
+    position: static !important;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    margin: 12px 0;
+    transform: none !important;
+    z-index: 1;
+  }
+
+  .btn-get-started {
+    position: relative !important;
+    bottom: auto;
+    left: auto;
+    margin-top: 16px;
+    z-index: 2;
+  }
+
+  .medic1,
+  .invest1,
+  .laptop1,
+  .passion1 {
+    display: none !important;
+  }
+  .slide {
+    gap: 20px;
+  }
+  .company-card {
+    flex: 0 0 calc(50% - 40px); /* 2 cards per row */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .get-started img {
+    max-width: 300px;
+  }
+
+  .btn-get-started {
+    font-size: 18px;
+    padding: 8px 28px;
+  }
+  .medic1,
+  .invest1,
+  .laptop1,
+  .passion1 {
+    display: none !important;
+  }
+  .company-card {
+    flex: 0 0 100%; /* 1 card per row */
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .get-started img {
+    max-width: 100%;
+  }
+
+  .btn-get-started {
+    font-size: 16px;
+    padding: 6px 24px;
+  }
 }

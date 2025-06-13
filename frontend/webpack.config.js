@@ -21,6 +21,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/, // Untuk semua file JS
+        exclude: /node_modules/, // Jangan proses file dari node_modules
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },

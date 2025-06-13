@@ -49,6 +49,20 @@ const HomePage = {
         window.location.hash = '#search';
       });
     }
+
+    const signUpBtn = document.querySelector('.signup');
+    if (signUpBtn) {
+      signUpBtn.addEventListener('click', () => {
+        window.location.hash = '#register'; // arahkan ke halaman Sign Up
+      });
+    }
+
+    const postJobBtn = document.querySelector('.postjob');
+    if (postJobBtn) {
+      postJobBtn.addEventListener('click', () => {
+        window.location.hash = '#postjob'; // arahkan ke halaman Post Job
+      });
+    }
   }
 };
 

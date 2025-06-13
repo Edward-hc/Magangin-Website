@@ -352,6 +352,7 @@
 }
 
 .company-detail .apply-button {
+  display: inline-block;
   margin-top: 16px;
   padding: 14px 70px;
   background-color: #042A4C;
@@ -360,6 +361,8 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
 .company-detail .apply-button:hover {
@@ -438,22 +441,218 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .results-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .company-list {
+    width: 100%;
+    max-height: none;
+    padding: 20px;
+  }
+
+  .company-card1 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .company-detail {
+    position: static;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .logo-box {
+    position: static;
+    margin: 20px auto;
+  }
+
+  .job-info {
+    padding: 20px 10px;
+    margin-top: 0;
+  }
+
+  .results-container {
+    padding: 16px;
+  }
+
+  .search-content h1 {
+    font-size: 36px;
+  }
+
+  .filter-options select {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
   .main-search {
-    padding: 40px 24px;
+    height: auto;
+    padding: 24px 16px;
+  }
+
+  .left-search {
+    padding: 20px 10px;
+  }
+
+  .search-content h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .search-content p {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .input-group {
+    flex-direction: row;
+    padding: 8px;
+  }
+
+  .search-row {
+    gap: 10px;
+  }
+
+  #search-button {
+    width: 100%;
+  }
+
+  .filter-options {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .filter-options select {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .company-card1 {
+    padding: 16px 20px;
+  }
+
+  .company-detail h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .company-detail .apply-button {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .banner-image img {
+    height: 140px;
+  }
+
+  .logo-box {
+    width: 120px;
+    height: 80px;
+  }
+
+  .pagination-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .results-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .company-list {
+    width: 100%;
+    max-height: none;
+    padding: 16px;
+  }
+
+  .company-card1 {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .company-detail {
+    position: static;
+    width: 100%;
+    margin: 16px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .banner-image img {
+    height: 140px;
+  }
+
+  .logo-box {
+    position: static;
+    width: 100px;
+    height: 70px;
+    margin: 16px auto;
+  }
+
+  .job-info {
+    padding: 20px 10px;
+    margin-top: 10px;
+  }
+
+  .filter-options {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .filter-options select {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .company-detail .apply-button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .pagination-container {
+    padding: 0 16px;
+  }
+
+  .pagination-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .search-content h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .search-content p {
+    font-size: 16px;
+    text-align: center;
   }
 
   .search-row {
     flex-direction: column;
   }
 
-  .logo14 {
-    position: static;
-    margin-top: 20px;
-    max-width: 100%;
+  #search-button {
+    width: 100%;
   }
 
-  .search-content {
-    max-width: 100%;
+  .input-group {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .left-search {
+    padding: 20px;
   }
 }
+

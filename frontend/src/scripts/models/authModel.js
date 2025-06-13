@@ -1,16 +1,29 @@
 const AuthModel = {
-  users: [],
+  getUsers() {
+    return JSON.parse(localStorage.getItem('users')) || [];
+  },
+
+  saveUsers(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+  },
 
   register({ firstName, lastName, email, password }) {
-    const userExists = this.users.some(user => user.email === email);
-    if (userExists) return { success: false, message: 'Email already registered' };
+    const users = this.getUsers();
+    const userExists = users.some(user => user.email === email);
 
-    this.users.push({ firstName, lastName, email, password });
+    if (userExists) {
+      return { success: false, message: 'Email already registered' };
+    }
+
+    const newUser = { firstName, lastName, email, password };
+    users.push(newUser);
+    this.saveUsers(users);
     return { success: true };
   },
 
   login({ email, password }) {
-    const user = this.users.find(user => user.email === email && user.password === password);
+    const users = this.getUsers();
+    const user = users.find(user => user.email === email && user.password === password);
     if (user) return { success: true, user };
     return { success: false, message: 'Invalid email or password' };
   }

@@ -16,6 +16,8 @@ const RegisterPresenter = {
 
       if (result.success) {
         localStorage.setItem('userFirstName', firstName);
+        localStorage.setItem('userLastName', lastName); // ✅ Tambahkan baris ini
+        localStorage.setItem('userEmail', email);
         messageBox.innerHTML = '<p class="success">Account created! Redirecting...</p>';
         updateNavbarAfterLogin();
         setTimeout(() => window.location.hash = '#home', 1500);

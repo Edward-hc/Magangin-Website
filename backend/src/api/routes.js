@@ -1,32 +1,75 @@
 const {
-  //isi nama routes
+  getJobsHandler,
+  getJobByIdHandler,
+  postJobHandler,
+  updateJobHandler,
+  deleteJobHandler,
 } = require('./handler');
 
 const routes = [
+  // Get all jobs
+  {
+    method: 'GET',
+    path: '/jobs',
+    handler: getJobsHandler,
+    options: {
+      cors: {
+        origin: ['*'],
+      },
+    },
+  },
+
+  // Get single job by ID
+  {
+    method: 'GET',
+    path: '/jobs/{id}',
+    handler: getJobByIdHandler,
+    options: {
+      cors: {
+        origin: ['*'],
+      },
+    },
+  },
+
+  // Create a new job
   {
     method: 'POST',
     path: '/jobs',
-    handler: {},
+    handler: postJobHandler,
+    options: {
+      cors: {
+        origin: ['*'],
+      },
+      payload: {
+        maxBytes: 10 * 1024 * 1024, // 10MB
+        parse: true,
+        allow: 'application/json',
+      },
+    },
   },
-  {
-    method: 'GET',
-    path: '/jobs',
-    handler: {},
-  },
-  {
-    method: 'GET',
-    path: '/jobs/{jobId}',
-    handler: {},
-  },
+
+  // Update job
   {
     method: 'PUT',
-    path: '/jobs/{jobId}',
-    handler: {},
+    path: '/jobs/{id}',
+    handler: updateJobHandler,
+    options: {
+      cors: {
+        origin: ['*'],
+      },
+    },
   },
+
+  // Delete job
   {
     method: 'DELETE',
-    path: '/jobs/{jobId}',
-    handler: {},
+    path: '/jobs/{id}',
+    handler: deleteJobHandler,
+    options: {
+      cors: {
+        origin: ['*'],
+      },
+    },
   },
 ];
 

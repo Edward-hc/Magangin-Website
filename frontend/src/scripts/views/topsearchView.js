@@ -19,7 +19,7 @@ const TopSearchView = {
 
                 
                 ${group.map(company => `
-                  <div class="company-card">
+                  <div class="company-card" data-id="${company.id}" style="cursor: pointer;">
                     <img src="${company.logo}" alt="${company.name}" class="company-logo">
                     <p class="company-name">${company.name}</p>
                   </div>
@@ -47,6 +47,13 @@ const TopSearchView = {
     const dots = document.querySelectorAll('.dot');
     const btnLeft = document.getElementById('arrow-left');
     const btnRight = document.getElementById('arrow-right');
+    const companyCards = document.querySelectorAll('.company-card');
+    companyCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const companyId = card.dataset.id;
+        window.location.hash = `#search?id=${companyId}`;
+      });
+    });
 
     let activeIndex = 0;
     updateSlide();

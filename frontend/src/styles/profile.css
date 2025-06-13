@@ -1,0 +1,49 @@
+.profile-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border: 2px solid rgba(4, 42, 76, 0.15);
+}
+
+.profile-container h2 {
+  margin-bottom: 1.5rem;
+  color: #042A4C;
+  text-align: center;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.profile-form label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.profile-form input,
+.profile-form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #797979;
+  margin-bottom: 12px;
+}
+
+.profile-form button {
+  background-color: #042A4C;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}

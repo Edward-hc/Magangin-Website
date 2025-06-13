@@ -4,6 +4,8 @@ import '../styles/homepage.css';
 import '../styles/search.css';
 import '../styles/login.css';
 import '../styles/register.css';
+import '../styles/postjob.css';
+import '../styles/profile.css';
 import App from './pages/app';
 import swRegister from './registerSW';
 
